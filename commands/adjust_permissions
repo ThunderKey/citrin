@@ -1,0 +1,25 @@
+#!/bin/bash
+
+chgrp -R rails-dev /var/svn/
+chmod 775 /var/svn/
+
+chgrp -R rails-dev /etc/apache2/templates
+chmod 775 /etc/apache2/templates
+
+chgrp -R rails-dev /etc/apache2/sites-enabled
+chmod 775 /etc/apache2/sites-enabled
+
+chgrp -R rails-dev /etc/apache2/sites-available
+chmod 775 /etc/apache2/sites-available
+
+chgrp -R rails-dev /var/www/rails_apps/prod
+chmod 775 /var/www/rails_apps/prod
+
+chgrp -R rails-dev /var/www/rails_apps/prod
+chmod 775 /var/www/rails_apps/prod
+
+chgrp -R rails-dev /var/www/rails_apps/dev
+chmod 775 /var/www/rails_apps/dev
+
+chgrp rails-dev /etc/citrin/citrin.conf
+chmod 775 /etc/citrin/citrin.conf
