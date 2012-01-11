@@ -47,14 +47,14 @@ function configure_apache {
   sed -i "s/PROJECT_ROOT/$sed_str/g" $conffile
   sed -i "s/URL/$url/g" $conffile
 
-  service apache2 reload 2>&1 > /dev/null 
-
-
   echo ""
   echo "Apache VirtualHost Konfiguration unter: $conffile"
   echo "App Root unter: $app_root"
   echo "URL: http://$url"
 
+
+  echo "Apache reload"
+  sudo service apache2 reload 2>&1 > /dev/null 
 }
 
 configure_apache
