@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{citrin}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Mike}]
@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
     "commands/create_svn",
     "commands/create_webserver",
     "commands/help",
+    "commands/remove_railsapp",
     "lib/citrin.rb",
     "lib/citrin/cli.rb",
     "test/helper.rb",
