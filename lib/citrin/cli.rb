@@ -1,3 +1,4 @@
+require 'citrin'
 
 class Citrin::CLI
 
