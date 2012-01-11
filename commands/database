@@ -1,9 +1,8 @@
 #!/bin/bash
-
 dbuser=$(grep mysql-user /etc/citrin/citrin.conf | split -d"=" -f 2)
 dbpwd=$(grep mysql-password /etc/citrin/citrin.conf | split -d"=" -f 2 )
-name=$1
-env=$2
+name=#{args[0]}
+env=#{args[1]}
 if [ -z $name  ] ; then
  echo "usage: $0 appname [env]"
  exit 1;
