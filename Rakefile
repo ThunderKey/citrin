@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/servasat/citrin"
   gem.license = "MIT"
   gem.summary = %Q{Client for citrin RailsServer management}
-  gem.description = %Q{This Gem helps you manage your citrin RailsServer (http://www.rails-server.ch). It creates or deletes Apache Configuration, MySQL Databases and Subversion Repositories.}
+  gem.description = %Q{This Gem helps you manage your citrin RailsServer (http://www.rails-server.ch). It creates Apache Configuration, MySQL Databases and Subversion Repositories.}
   gem.email = "mike@citrin.ch"
   gem.authors = ["Mike"]
   # dependencies defined in Gemfile

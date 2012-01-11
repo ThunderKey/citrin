@@ -1,6 +1,8 @@
 = citrin
 
-Description goes here.
+This Gem helps you manage your citrin RailsServer (http://www.rails-server.ch). 
+
+It creates Apache Configuration, MySQL Databases and Subversion Repositories.
 
 == Contributing to citrin
  
