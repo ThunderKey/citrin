@@ -19,4 +19,4 @@ rm -r $svn_path
 rm /etc/apache2/sites-enabled/prod.$name.conf
 rm /etc/apache2/sites-enabled/dev.$name.conf
 
-service apache2 reload
+sudo service apache2 reload
