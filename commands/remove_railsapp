@@ -1,0 +1,22 @@
+#!/bin/bash
+
+name=$1
+
+prod_path="/var/www/rails_apps/prod/"
+dev_path="/var/www/rails_apps/dev/"
+svn_path=/var/svn/$name/
+path="$dev_path$name"
+if [ -z $name ] ; then
+ echo "usage: $0 appname"
+ exit 1;
+fi
+
+rm $prod_path$name
+rm -r $dev_path$name
+rm -r $svn_path
+
+
+rm /etc/apache2/sites-enabled/prod.$name.conf
+rm /etc/apache2/sites-enabled/dev.$name.conf
+
+service apache2 reload
