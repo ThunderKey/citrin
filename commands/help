@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Usage: citrin command [args]
+Commands are:
+  database create appname
+  webserver create appname
+  svn create appname"
