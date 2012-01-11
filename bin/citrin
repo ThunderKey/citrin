@@ -1,0 +1,2 @@
+require "citrin/cli"
+Citrin::CLI.start(*ARGV)
