@@ -1,0 +1,60 @@
+#!/bin/bash
+
+name=$1
+env=$2
+prod_path="/var/www/rails_apps/prod/"
+dev_path="/var/www/rails_apps/dev/"
+path="$dev_path$name"
+if [ -z $name ] ; then
+ echo "usage: $0 appname [environment]"
+ exit 1;
+fi
+if [ -e $path ] ; then
+ echo "Project already exits in $path";
+ exit 2;
+fi
+
+if [ -z $env  ] ; then
+  env="prod"
+fi
+
+if [ $env != "prod" -a $env != "dev" ]; then
+ echo "usage: $0 dbname env"
+ echo "Options for env: prod dev"
+ exit 3;
+fi
+
+
+
+function configure_apache {
+  if [ $env = "prod" ]; then
+    conf_template="/etc/apache2/templates/prod_rails.conf"
+    conffile="/etc/apache2/sites-enabled/prod.$name.conf"
+    url=$name.$(hostname -f)
+    app_root=/var/www/rails_apps/prod/$name
+  elif [  $env = "dev" ]; then
+    conf_template="/etc/apache2/templates/dev_rails.conf"
+    conffile="/etc/apache2/sites-enabled/dev.$name.conf"
+    url=dev.$name.$(hostname -f)
+    app_root=/var/www/rails_apps/dev/$name
+  else
+    echo "Invalid Env"
+    exit 3
+  fi
+
+  cp -p $conf_template $conffile
+  sed_str=$(echo $app_root | sed -e 's/\(\/\|\\\|&\)/\\&/g')
+  sed -i "s/PROJECT_ROOT/$sed_str/g" $conffile
+  sed -i "s/URL/$url/g" $conffile
+
+  service apache2 reload 2>&1 > /dev/null 
+
+
+  echo ""
+  echo "Apache VirtualHost Konfiguration unter: $conffile"
+  echo "App Root unter: $app_root"
+  echo "URL: http://$url"
+
+}
+
+configure_apache

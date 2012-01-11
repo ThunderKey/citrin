@@ -1,0 +1,54 @@
+#!/bin/bash
+
+dbuser=$(grep mysql-user /etc/citrin/citrin.conf | split -d"=" -f 2)
+dbpwd=$(grep mysql-password /etc/citrin/citrin.conf | split -d"=" -f 2 )
+name=$1
+env=$2
+if [ -z $name  ] ; then
+ echo "usage: $0 appname [env]"
+ exit 1;
+fi
+if [ -z $env  ] ; then
+  env="prod"
+fi
+
+if [ $env != "prod" -a $env != "dev" -a $env != "test" ]; then
+ echo "usage: $0 appname env"
+ echo "Options for env: prod dev test"
+ exit 2;
+fi
+
+db_name="${name}_$env"
+db_user="${name}_$env"
+db_user_pw=$(pwgen -1)
+mysql --user $dbuser --password=$dbpwd -e "create database $db_name;"
+#echo "Database $db_name created"
+
+mysql --user $dbuser --password=$dbpwd -e "GRANT ALL ON $db_user.* TO '$db_name'@'localhost';"
+mysql --user $dbuser --password=$dbpwd -e "SET PASSWORD FOR '$db_user'@'localhost' = PASSWORD('$db_user_pw');"
+#echo "User $db_user with password $db_user_pw created"
+
+
+echo "Put this in your config/database.yml"
+
+if [ $env = "prod" ]; then
+ fullenv="production"
+elif [  $env = "dev" ]; then
+ fullenv="development"
+elif [  $env = "test" ]; then
+ fullenv="test"
+else
+  echo "Invalid Env"
+  exit 3
+fi
+
+echo "$fullenv:"
+echo "  adapter: mysql2"
+echo "  encoding: utf8"
+echo "  database: $db_name"
+echo "  username: $db_user"
+echo "  password: $db_user_pw"
+
+echo ""
+echo "and run"
+echo "  RAILS_ENV=$fullenv  rake db:migrate"

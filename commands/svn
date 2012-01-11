@@ -1,0 +1,14 @@
+#!/bin/bash
+
+name=$1
+proj_owner=www-data
+svn_path=/var/svn/$name/
+function create_svn {
+  echo "CREATING SVN"
+  svnadmin create $svn_path
+  chown -R $proj_owner.www-data $svn_path
+
+  echo "svn co svn+ssh://root@$(hostname -f)$svn_path" 
+}
+
+create_svn
