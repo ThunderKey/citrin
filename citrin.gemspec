@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "bin/citrin",
     "citrin.gemspec",
+    "commands/adjust_permissions",
     "commands/create_database",
     "commands/create_svn",
     "commands/create_webserver",
