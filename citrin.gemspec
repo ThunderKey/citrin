@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "bin/citrin",
+    "citrin.gemspec",
     "commands/create_database",
     "commands/create_svn",
     "commands/create_webserver",
