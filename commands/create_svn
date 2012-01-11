@@ -1,6 +1,10 @@
 #!/bin/bash
-
 name=$1
+
+if [ -z $name  ] ; then
+ echo "usage: $0 appname [env]"
+ exit 1;
+fi
 proj_owner=www-data
 svn_path=/var/svn/$name/
 function create_svn {
