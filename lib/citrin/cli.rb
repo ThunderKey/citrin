@@ -5,7 +5,7 @@ class Citrin::CLI
 
   def self.start(*args)
     command = args.shift.strip rescue "help"
-    `#{$:}../../commands/#{command} #{args}`
+    `#{$0}/../../commands/#{command} #{args}`
   end
 
 end
