@@ -9,7 +9,7 @@ class TestCitrin < Test::Unit::TestCase
   end
 
   def cleanup
-    `rm /etc/apache2/sites-enabled/prod.#{@appname}.conf`
+    Citrin::CLI.start("remove_railsapp", @appname)
   end
 
   should "create webserver config" do
