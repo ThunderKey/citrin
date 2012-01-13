@@ -15,7 +15,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "citrin"
-  gem.homepage = "http://github.com/servasat/citrin"
+  gem.homepage = "http://github.com/firemind/citrin"
   gem.license = "MIT"
   gem.summary = %Q{Client for citrin RailsServer management}
   gem.description = %Q{This Gem helps you manage your citrin RailsServer (http://www.rails-server.ch). It creates Apache Configuration, MySQL Databases and Subversion Repositories.}

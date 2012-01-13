@@ -40,7 +40,7 @@ Gem::Specification.new do |s|
     "test/helper.rb",
     "test/test_citrin.rb"
   ]
-  s.homepage = %q{http://github.com/servasat/citrin}
+  s.homepage = %q{http://github.com/firemind/citrin}
   s.licenses = [%q{MIT}]
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.7}
