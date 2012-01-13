@@ -11,12 +11,12 @@ if [ -z $name ] ; then
  exit 1;
 fi
 
-rm $prod_path$name
-rm -r $dev_path$name
-rm -r $svn_path
+rm -rf $prod_path$name
+rm -rf $dev_path$name
+rm -rf $svn_path
 
 
-rm /etc/apache2/sites-enabled/prod.$name.conf
-rm /etc/apache2/sites-enabled/dev.$name.conf
+rm -f /etc/apache2/sites-enabled/prod.$name.conf
+rm -f /etc/apache2/sites-enabled/dev.$name.conf
 
 sudo service apache2 reload
