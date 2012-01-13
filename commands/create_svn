@@ -1,18 +1,36 @@
 #!/bin/bash
-name=$1
 
+name=$1
 if [ -z $name  ] ; then
- echo "usage: $0 appname [env]"
+ echo "usage: $0 appname [env] [options]"
  exit 1;
 fi
+
+env=$2
+if [ -z $env  ] ; then
+  env="prod"
+fi
+
 proj_owner=www-data
 svn_path=/var/svn/$name/
+
 function create_svn {
   echo "CREATING SVN"
   svnadmin create $svn_path
-  chown -R $proj_owner.www-data $svn_path
+  chown -R $USER.rails-dev $svn_path
 
-  echo "svn co svn+ssh://root@$(hostname -f)$svn_path" 
+  echo "svn co svn+ssh://$(hostname -f)$svn_path"
 }
 
 create_svn
+
+for var1 in "$@"
+do
+case $var1 in
+  --with-rails)
+   cd /var/www/rails_apps/$env/
+   svn co svn+ssh://$(hostname -f)$svn_path $name/
+   rails new $name
+   ;;
+  esac
+done

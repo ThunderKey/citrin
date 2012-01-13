@@ -16,7 +16,7 @@ class TestCitrin < Test::Unit::TestCase
     Citrin::CLI.start("create_webserver", @appname)
     assert File.exists?("/etc/apache2/sites-enabled/prod.#{@appname}.conf")
     `cd /var/www/rails_apps/prod/ && rails new #{@appname}`
-    statuscode = `curl -sL -w "%{http_code}" "#{@appname}.$(hostname).citrin.ch" -o /dev/null`
+    statuscode = `curl -sL -w "%{http_code}" "#{@appname}.$(hostname -f)" -o /dev/null`
     assert_equal "200", statuscode
     cleanup
   end
