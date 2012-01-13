@@ -1,5 +1,5 @@
 require 'citrin'
-require 'citrin_helper'
+require 'citrin/citrin_helper'
 
 class Citrin::CLI
   include CitrinHelper
