@@ -4,10 +4,7 @@ name=$1
 conf_template=$2
 conffile=$3
 url=$4
-if [ -z $name -o -z $conf_template -o -z $conffile -o -z $url] ; then
- echo "usage: $0 appname conf_template conffile url app_root"
- exit 1;
-fi
+app_root=$5
 
 
 function configure_apache {
