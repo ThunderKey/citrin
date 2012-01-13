@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{citrin}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Mike}]
-  s.date = %q{2012-01-11}
+  s.date = %q{2012-01-13}
   s.description = %q{This Gem helps you manage your citrin RailsServer (http://www.rails-server.ch). It creates Apache Configuration, MySQL Databases and Subversion Repositories.}
   s.email = %q{mike@citrin.ch}
   s.executables = [%q{citrin}]
