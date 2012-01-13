@@ -1,8 +1,8 @@
 require 'citrin'
-require 'citrin/citrin_helper'
+require 'citrin/helpers'
 
 class Citrin::CLI
-  include CitrinHelper
+  extend Citrin::Helpers
 
   def self.start(*args)
     command = args.shift.strip rescue "help"

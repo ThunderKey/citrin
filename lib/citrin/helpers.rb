@@ -1,4 +1,4 @@
-module CitrinHelper
+module Citrin::Helpers
   def app_root(appname, env)
     env ||= "prod"
     "/var/www/rails_apps/#{env}/#{appname}"
