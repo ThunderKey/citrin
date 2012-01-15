@@ -4,15 +4,15 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{citrin}
-  s.version = "0.0.8"
+  s.name = "citrin"
+  s.version = "0.0.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Mike}]
-  s.date = %q{2012-01-13}
-  s.description = %q{This Gem helps you manage your citrin RailsServer (http://www.rails-server.ch). It creates Apache Configuration, MySQL Databases and Subversion Repositories.}
-  s.email = %q{mike@citrin.ch}
-  s.executables = [%q{citrin}]
+  s.authors = ["Mike"]
+  s.date = "2012-01-15"
+  s.description = "This Gem helps you manage your citrin RailsServer (http://www.rails-server.ch). It creates Apache Configuration, MySQL Databases and Subversion Repositories."
+  s.email = "mike@citrin.ch"
+  s.executables = ["citrin"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README",
@@ -35,16 +35,26 @@ Gem::Specification.new do |s|
     "commands/create_webserver",
     "commands/help",
     "commands/remove_railsapp",
+    "etc/citrin.yml",
     "lib/citrin.rb",
+    "lib/citrin/app.rb",
     "lib/citrin/cli.rb",
+    "lib/citrin/commands.rb",
+    "lib/citrin/commands/create_database.rb",
+    "lib/citrin/commands/create_webserver.rb",
+    "lib/citrin/helpers.rb",
+    "templates/dev.database.erb",
+    "templates/dev_virtualhost.erb",
+    "templates/prod.database.erb",
+    "templates/prod_virtualhost.erb",
     "test/helper.rb",
     "test/test_citrin.rb"
   ]
-  s.homepage = %q{http://github.com/firemind/citrin}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.7}
-  s.summary = %q{Client for citrin RailsServer management}
+  s.homepage = "http://github.com/firemind/citrin"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.10"
+  s.summary = "Client for citrin RailsServer management"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -52,6 +62,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rake>, ["= 0.9.2.2"])
       s.add_runtime_dependency(%q<rails>, [">= 3.1.0"])
+      s.add_runtime_dependency(%q<mysql2>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -60,6 +71,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<rake>, ["= 0.9.2.2"])
       s.add_dependency(%q<rails>, [">= 3.1.0"])
+      s.add_dependency(%q<mysql2>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -69,6 +81,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<rake>, ["= 0.9.2.2"])
     s.add_dependency(%q<rails>, [">= 3.1.0"])
+    s.add_dependency(%q<mysql2>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
