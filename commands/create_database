@@ -42,13 +42,6 @@ else
   exit 3
 fi
 
-echo "$fullenv:"
-echo "  adapter: mysql2"
-echo "  encoding: utf8"
-echo "  database: $db_name"
-echo "  username: $db_user"
-echo "  password: $db_user_pw"
-
 echo ""
 echo "and run"
 echo "  RAILS_ENV=$fullenv  rake db:migrate"

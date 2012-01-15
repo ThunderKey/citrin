@@ -7,6 +7,7 @@ source "http://rubygems.org"
 # Include everything needed to run rake, tests, features, etc.
 gem 'rake', '0.9.2.2'
 gem 'rails', '>= 3.1.0'
+gem 'mysql2'
 group :development do
   gem "shoulda", ">= 0"
   gem "bundler", "~> 1.0.0"

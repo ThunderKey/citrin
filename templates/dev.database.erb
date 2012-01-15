@@ -1,8 +1,6 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: <%= db_name %>
-  username: <%= db_user %>
-  password: <%= db_user_pw %>
-
-
+  database: <%= @app.db_name %>
+  username: <%= @app.db_user %>
+  password: <%= @app.db_pass %>

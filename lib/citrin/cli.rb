@@ -9,14 +9,18 @@ class Citrin::CLI
   def self.start(*args)
     command = args.shift.strip rescue "help"
     Citrin::Commands.load
+    name = args[0]
+    env = args[1]
+    app = Citrin::App.new(name, env)
     case command
     when "create_svn_rails"
       puts `#{File.dirname(__FILE__)}/../../commands/create_svn #{args.join(" ")} --with-rails`
+    when "create_database"
+      return Commands::CreateDatabase.run(app)
     when "create_webserver"
-      name = args[0]
-      env = args[1]
-      c = CreateWebserver.new(App.new(name, env))
-      c.run
+      return Commands::CreateWebserver.run(app)
+    when "write_config"
+      `cp #{File.dirname(__FILE__)}/../../etc/citrin.yml /etc/citrin.yml`
     else
       puts `#{File.dirname(__FILE__)}/../../commands/#{command} #{args.join(" ")}`
     end
