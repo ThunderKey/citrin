@@ -22,8 +22,16 @@ class Citrin::CLI
     when "write_config"
       `cp #{File.dirname(__FILE__)}/../../etc/citrin.yml /etc/citrin.yml`
     else
-      puts `#{File.dirname(__FILE__)}/../../commands/#{command} #{args.join(" ")}`
+      begin
+        puts `#{File.dirname(__FILE__)}/../../commands/#{command} #{args.join(" ")}`
+      rescue
+        help
+      end
     end
+  end
+
+  def self.help
+    puts `#{File.dirname(__FILE__)}/../../commands/help`
   end
 
 end
