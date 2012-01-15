@@ -32,6 +32,13 @@ class TestCitrin < Test::Unit::TestCase
     assert_equal "200", statuscode
   end
 
+  should "create svn config" do
+    Citrin::CLI.start("create_svn", @appname)
+    assert File.exists?("/var/svn/#{@appname}")
+    svn_info=`svn info svn+ssh://$(hostname -f)/var/svn/#{@appname} 2> /dev/null`
+    assert_not_equal "", svn_info
+  end
+
   should "create database" do
    @app=Citrin::CLI.start("create_database", @appname)
    begin
