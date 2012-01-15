@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+  ServerName <%= @app.url %>
+  DocumentRoot <%= @app.app_root %>/public
+  RackEnv production
+
+  <Directory <%= @app.app_root %>/public >
+    AllowOverride all
+    Options -MultiViews
+    Options ExecCGI FollowSymLinks
+    Order allow,deny
+     Allow from all
+  </Directory>
+</VirtualHost>

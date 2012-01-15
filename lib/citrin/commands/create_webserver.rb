@@ -1,18 +1,18 @@
 module Commands
 class CreateWebserver
-  def initialize(options = {}
-    @options = options
+  extend Citrin::Helpers
+  def initialize(app)
+    @app = app
   end
   def self.run
-   `cp -p #{@options[:conf_template]} #{@options[:conffile]}` 
-    sed_str=`echo #{@options[:app_root} | sed -e 's/\(\/\|\\\|&\)/\\&/g')`
-
-    `sed -i "s/PROJECT_ROOT/#{sed_str}/g" #{@options[:conffile]}`
-    `sed -i "s/PROJECT_ROOT/#{@options[:url]}/g" #{@options[:conffile]}`
+    template_file = webserver_template_file(@app.env)
+    template = ERB.new(File.read(template_file), 0, "%<>")
+    result = template.result(binding)
+    File.open(@app.webserver_config_file], 'w') {|f| f.write(result ) }
     
-    puts "Apache VirtualHost Konfiguration unter: #{@options[:conffile]}"
-    puts "App Root unter: #{@options[:app_root}}"
-    puts "URL: http://#{@options[:url]}"
+    puts "Apache VirtualHost Konfiguration unter: #{@app.webserver_config_file}"
+    puts "App Root unter: #{@app.app_root}"
+    puts "URL: http://#{@app.url}"
 
     puts "Apache reload"
     `sudo service apache2 reload 2>&1 > /dev/null`
