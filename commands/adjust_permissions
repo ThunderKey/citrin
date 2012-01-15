@@ -22,4 +22,4 @@ chgrp -R rails-dev /var/www/rails_apps/dev
 chmod 775 /var/www/rails_apps/dev
 
 chgrp rails-dev /etc/citrin.yml
-chmod 770 /etc/citrin.yml
+chmod 660 /etc/citrin.yml
