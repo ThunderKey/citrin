@@ -1,6 +1,11 @@
 #!/bin/bash
 echo "Usage: citrin command [args]
 Commands are:
-  create_database appname
-  create_webserver appname
-  create_svn appname"
+  create_database appname [env]
+  create_webserver appname [env]
+  create_svn_rails appname [env]
+  create_svn appname
+
+Options for env:
+  prod
+  dev"

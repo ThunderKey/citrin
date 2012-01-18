@@ -9,7 +9,7 @@ class TestCitrin < Test::Unit::TestCase
     @appname = "citest" 
   end
 
-  def cleanup
+  def teardown
     Citrin::CLI.start("remove_railsapp", @appname)
     @app = Citrin::App.new(@appname)
     begin
@@ -51,6 +51,5 @@ class TestCitrin < Test::Unit::TestCase
      # disconnect from server
      dbh.close if dbh
    end
-   cleanup
   end
 end
